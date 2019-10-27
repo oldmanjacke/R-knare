@@ -80,8 +80,6 @@ namespace Räknare
         private static void RunExerciseThree()
 
         {
-
-            var prompter = new ConsolePrompt(null);
             {
                 Console.WriteLine("Enter first number:");
                 string name = Console.ReadLine();
@@ -97,6 +95,16 @@ namespace Räknare
 
 
         }
+
+        private static object PromptOptions;
+        /
+
+            var prompter = new ConsolePrompt(null);
+            var validOperations = new[] { "x", "/", "+", "-" };
+            var firstNum prompter.Prompt<int>("enter the first number in your basic equation", PromptOptions.Required);
+            var secondNum = prompter.Prompt<int>("Now enter your second number in the basic equation", PromptOptions.Required);
+            var operation = prompter.Prompt<string>("Ok now enter your operation (" + string.Join(", ", validOperations) + ")", PromptOptions.Required, validationMethod: x => validOperations.Contains(x));
+
 
         // Cerate your exercise methods her
 
